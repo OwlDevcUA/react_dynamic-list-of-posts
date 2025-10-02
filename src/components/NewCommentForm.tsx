@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FormInput } from './FormInput';
-import { FormTextarea } from './FromTextarea';
+import { FormTextarea } from './FormTextarea';
 import { Comment } from '../types/Comment';
 import classNames from 'classnames';
 import { FormErrorState } from '../types/ErrorState';
@@ -8,7 +8,12 @@ import { FormErrorState } from '../types/ErrorState';
 type Props = {
   loading: boolean;
   selectedPostId?: number;
-  onAddComment: ({ postId, name, email, body }: Omit<Comment, 'id'>) => void;
+  onAddComment: ({
+    postId,
+    name,
+    email,
+    body,
+  }: Omit<Comment, 'id'>) => Promise<void>;
 };
 
 export const NewCommentForm: React.FC<Props> = ({
@@ -130,7 +135,11 @@ export const NewCommentForm: React.FC<Props> = ({
           <button
             type="reset"
             className="button is-link is-light"
-            onClick={handleClear}
+            onClick={() => {
+              handleClear();
+              setEmail('');
+              setName('');
+            }}
           >
             Clear
           </button>

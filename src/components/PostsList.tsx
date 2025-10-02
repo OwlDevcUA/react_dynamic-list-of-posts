@@ -1,16 +1,16 @@
 import React from 'react';
 import { Post } from '../types/Post';
-import { PostItem } from './PostItme';
+import { PostItem } from './PostItem';
 
 type Props = {
   posts: Post[];
-  selecetdPost: Post | null;
+  selecetedPost: Post | null;
   onSelectedPost: (post: Post | null) => void;
 };
 
 export const PostsList: React.FC<Props> = ({
   posts,
-  selecetdPost,
+  selecetedPost,
   onSelectedPost,
 }) => {
   return (
@@ -31,7 +31,7 @@ export const PostsList: React.FC<Props> = ({
           {posts.map(post => (
             <PostItem
               post={post}
-              selectedPost={selecetdPost}
+              selectedPost={selecetedPost}
               key={post.id}
               onSelectedPost={onSelectedPost}
             />

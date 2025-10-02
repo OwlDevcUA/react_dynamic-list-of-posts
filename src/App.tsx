@@ -49,7 +49,6 @@ export const App = () => {
           ...prev,
           users: true,
         }));
-        throw e;
       }
     }
 
@@ -76,7 +75,6 @@ export const App = () => {
           ...prev,
           posts: true,
         }));
-        throw e;
       } finally {
         setLoading(prev => ({
           ...prev,
@@ -111,7 +109,6 @@ export const App = () => {
           ...prev,
           comments: true,
         }));
-        throw e;
       } finally {
         setLoading(prev => ({
           ...prev,
@@ -155,7 +152,6 @@ export const App = () => {
         ...prev,
         comments: true,
       }));
-      throw e;
     } finally {
       setLoading(prev => ({
         ...prev,
@@ -218,7 +214,7 @@ export const App = () => {
                 {!!userPosts.length && !loading.posts && (
                   <PostsList
                     posts={userPosts}
-                    selecetdPost={selectedPost}
+                    selecetedPost={selectedPost}
                     onSelectedPost={setSelectedPost}
                   />
                 )}
